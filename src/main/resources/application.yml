@@ -1,5 +1,5 @@
 spring:
   application:
-    name: rasta-server
+    name: Rasta-Server
   profiles:
-    active: local
+    active: ${env-flag}

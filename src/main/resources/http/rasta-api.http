@@ -1,0 +1,8 @@
+### 创建短链
+POST http://localhost:9099/create
+Content-Type: application/json
+
+{
+  "longUrl": "请输入长链接",
+  "description": "请输入描述信息"
+}

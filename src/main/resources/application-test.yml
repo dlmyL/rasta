@@ -1,11 +1,11 @@
 server:
-  address: 127.0.0.1
+  address: 192.168.31.101
   port: 9099
 
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.31.101:3306/db_rasta?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://${server.address}:3306/db_rasta?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
     username: root
     password: 123456
     type: com.zaxxer.hikari.HikariDataSource
@@ -19,11 +19,11 @@ spring:
       connection-timeout: 30000
       connection-test-query: SELECT 1
   redis:
-    host: 192.168.31.101
+    host: ${server.address}
     port: 6379
     password: 123456
   rabbitmq:
-    host: 192.168.31.101
+    host: ${server.address}
     port: 5672
     username: guest
     password: guest
@@ -51,9 +51,9 @@ rasta:
   default:
     domain: ${server.address}:${server.port}
   sql:
-    show: true
+    show: false
   code:
-    batch: 50
+    batch: 100
   error:
     page:
       url: https://www.baidu.com/404.html

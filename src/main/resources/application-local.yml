@@ -1,2 +1,54 @@
 server:
-  port: 9000
+  address: 127.0.0.1
+  port: 9099
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${server.address}:3306/db_rasta?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: 123456
+  redis:
+    host: ${server.address}
+    port: 6379
+  rabbitmq:
+    host: ${server.address}
+    port: 5672
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      table-prefix: r_
+    banner: off
+  type-handlers-package: cn.dlmyl.rasta.infra.support.mybatis.handler
+
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    root: debug
+
+rasta:
+  default:
+    domain: ${server.address}:${server.port}
+  sql:
+    show: true
+  code:
+    batch: 10
+  error:
+    page:
+      url: https://www.baidu.com/404.html
+  exclude:
+    uris: /env,/index.html,/index.jsp
+  snowflake:
+    data:
+      center:
+        id: 1
+    worker:
+      id: 1
