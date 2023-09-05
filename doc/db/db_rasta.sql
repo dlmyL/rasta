@@ -19,10 +19,6 @@ CREATE TABLE `r_domain` (
     UNIQUE INDEX `uk_domain`(`domain_value`)
 ) COMMENT = '短链域名配置表';
 
-INSERT INTO `r_domain` (`id`, `domain_value`, `protocol`, `domain_status`, `create_time`, `edit_time`, `creator`, `editor`, `deleted`)
-     VALUES (1, '127.0.0.1:9099', 'http', 1, '2023-09-03 22:10:18', '2023-09-03 22:10:18', 'admin', 'admin', 0);
-
-
 CREATE TABLE `r_code` (
     `id`                  BIGINT UNSIGNED    NOT NULL    AUTO_INCREMENT                                          COMMENT '主键',
 
@@ -39,8 +35,7 @@ CREATE TABLE `r_code` (
 
     PRIMARY KEY (`id`),
     UNIQUE INDEX `uk_compression_code`(`compression_code`)
-) COMMENT = '短码表';
-
+) COMMENT = '短链压缩码表';
 
 CREATE TABLE `r_mapping` (
     `id`                BIGINT UNSIGNED     NOT NULL AUTO_INCREMENT                                             COMMENT '主键',
@@ -65,7 +60,6 @@ CREATE TABLE `r_mapping` (
     INDEX `idx_short_url_digest`(`short_url_digest`),
     INDEX `idx_long_url_digest`(`long_url_digest`)
 ) COMMENT = '短链映射表';
-
 
 CREATE TABLE `r_transform_event_record` (
     `id`                bigint UNSIGNED     NOT NULL AUTO_INCREMENT                                             COMMENT '主键',
@@ -103,8 +97,7 @@ CREATE TABLE `r_transform_event_record` (
     INDEX `idx_short_url_digest`(`short_url_digest`),
     INDEX `idx_long_url_digest`(`long_url_digest`),
     INDEX `idx_unique_identity`(`unique_identity`)
-) COMMENT = '短链访问事件转换表';
-
+) COMMENT = '短链事件转换记录表';
 
 CREATE TABLE `r_visit_statistics` (
     `id`                            BIGINT UNSIGNED     NOT NULL    AUTO_INCREMENT                                          COMMENT '主键',
@@ -127,4 +120,9 @@ CREATE TABLE `r_visit_statistics` (
 
     PRIMARY KEY (`id`),
     UNIQUE INDEX `uk_date_code_digest`(`statistics_date`, `compression_code`)
-) COMMENT = '短链访问数据统计表';
+) COMMENT = '短链数据统计表';
+
+INSERT INTO `r_domain` (`id`, `domain_value`, `protocol`, `domain_status`, `create_time`, `edit_time`, `creator`, `editor`, `deleted`)
+     VALUES (1, '127.0.0.1:9099', 'http', 1, '2023-09-03 22:10:18', '2023-09-03 22:10:18', 'admin', 'admin', 0);
+
+commit;

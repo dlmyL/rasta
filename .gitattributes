@@ -1,0 +1,3 @@
+*.bat linguist-language=Java
+*.sh linguist-language=Java
+*.config linguist-language=Java

@@ -1,49 +1,8 @@
-HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-!**/node_modules/
-!**/dist/
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
 .idea
-*.iws
+.classpath
+.project
 *.iml
+*.iws
 *.ipr
-out
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/
-
-# maven plugin ignore
-*.gpg
-.flattened-pom.xml
-
-### Docs ###
-document/node_modules
-document/build
-document/.docusaurus
-
-### Docker ###
-docker/conf
-docker/target
+out/
+target/
